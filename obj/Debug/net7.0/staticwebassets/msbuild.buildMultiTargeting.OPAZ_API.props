@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OPAZ_API.props" />
+</Project>
