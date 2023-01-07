@@ -30,13 +30,27 @@ namespace OPAZ_API.Services
                 JsonObject attributes = (JsonObject)feature!["attributes"]!;
                 JsonObject geometry = (JsonObject)feature!["geometry"]!;
 
-                CollegeUniversity cu = new CollegeUniversity();
-                cu.Fid = ((int)attributes!["FID"]!);
-                cu.Name = ((String)attributes!["NAME"]!);
-                cu.City = ((String)attributes!["CITY"]!);
-                cu.State = ((String)attributes!["STATE"]!);
-                cu.TotalEnroll = ((int)attributes!["TOT_ENROLL"]!);
-                collegeUniversities.Add(cu);
+
+
+                if (attributes!["CITY"] != null && attributes!["STATE"] != null)
+                {
+
+                    CollegeUniversity cu = new CollegeUniversity();
+                    cu.Fid = ((int)attributes!["FID"]!);
+                    cu.Name = ((String)attributes!["NAME"]!);
+                    cu.City = ((String)attributes!["CITY"]!);
+                    cu.State = ((String)attributes!["STATE"]!);
+
+                    if (attributes!["TOT_ENROLL"] != null)
+                    {
+                        cu.TotalEnroll = ((int)attributes["TOT_ENROLL"]!);
+                    }
+                    else
+                    {
+                        cu.TotalEnroll = 0;
+                    }
+                    collegeUniversities.Add(cu);
+                }
             }
 
 
