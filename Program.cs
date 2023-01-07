@@ -28,6 +28,15 @@ namespace OPAZ_API
 
             app.MapControllers();
 
+
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+
+
             app.Run();
         }
     }
